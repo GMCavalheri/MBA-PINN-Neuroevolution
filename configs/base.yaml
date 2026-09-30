@@ -1,0 +1,24 @@
+# Shared configuration for all problems. Problem files override any key.
+
+ga:
+  population: 10            # M
+  selected: 5               # K (truncation selection)
+  layers_range: [1, 10]     # hidden layers in the initial population
+  neurons_range: [1, 20]    # neurons per hidden layer in the initial population
+  mutation_layers: [0, 1]   # Delta L
+  mutation_neurons: [0, 1, 2]  # Delta n, applied to every hidden layer
+  epochs_screen: 1000       # E_fit (5% of the full training)
+  epochs_reeval: 2000       # E_term (10% of the full training)
+
+random_search:              # equal-budget baseline: 10 x 3000 = 30000 epochs
+  candidates: 10
+  epochs: 3000
+
+epochs_full: 20000          # E_total
+fitness_window: 100         # fitness / final loss = mean total loss of the last N epochs
+
+runs: 35
+master_seed_offset: 1000    # master seed of run r = offset + r
+
+device: cuda                # falls back to cpu if CUDA is unavailable
+amp: false                  # fp16 autocast; set per problem after scripts/benchmark_amp.py

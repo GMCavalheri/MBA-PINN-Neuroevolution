@@ -1,0 +1,440 @@
+{
+ "environment": {
+  "python": "3.12.3",
+  "torch": "2.11.0+cu128",
+  "numpy": "2.5.3",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "device": "cuda",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 2060"
+ },
+ "runs": [
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 0.9640851984950132,
+   "rel_l2": 0.9965906739234924,
+   "final_loss": 0.4547134041786194,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 12.531294098502258,
+   "rel_l2": 0.9965893626213074,
+   "final_loss": 0.4547280967235565,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 1.5869393399989349,
+   "rel_l2": 0.992667555809021,
+   "final_loss": 0.44870099425315857,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 21.041357187001267,
+   "rel_l2": 0.9926935434341431,
+   "final_loss": 0.4487078785896301,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 2.720181731499906,
+   "rel_l2": 0.8283050060272217,
+   "final_loss": 0.2134939432144165,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 32.598940670002776,
+   "rel_l2": 0.8435356616973877,
+   "final_loss": 0.2337261587381363,
+   "diverged": false
+  },
+  {
+   "problem": "pendulum",
+   "device": "cpu",
+   "amp": false,
+   "mode": "eager_cpu",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 200,
+   "ms_per_epoch": 3.2236254250165075,
+   "rel_l2": 0.9982659816741943,
+   "final_loss": 0.4588335454463959,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 4.70110779049719,
+   "rel_l2": 0.003726707538589835,
+   "final_loss": 0.00012554257409647107,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 17.927906034499756,
+   "rel_l2": 0.0038258584681898355,
+   "final_loss": 0.00017056262004189193,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 6.413486756995553,
+   "rel_l2": 0.003935359884053469,
+   "final_loss": 0.00031193363247439265,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 29.529718220001087,
+   "rel_l2": 0.017245464026927948,
+   "final_loss": 0.0002694799331948161,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 15.42913934149692,
+   "rel_l2": 0.0026987015735358,
+   "final_loss": 0.00013960842625238,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 46.16159279149724,
+   "rel_l2": 0.0032912236638367176,
+   "final_loss": 0.00014967490278650075,
+   "diverged": false
+  },
+  {
+   "problem": "heat",
+   "device": "cpu",
+   "amp": false,
+   "mode": "eager_cpu",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 200,
+   "ms_per_epoch": 67.77527828999155,
+   "rel_l2": 0.6155257821083069,
+   "final_loss": 0.2904364764690399,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 6.451106767002784,
+   "rel_l2": 0.037646982818841934,
+   "final_loss": 0.0017404300160706043,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 22.208909049499198,
+   "rel_l2": 0.0455668568611145,
+   "final_loss": 0.0026448401622474194,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 8.770401584995852,
+   "rel_l2": 0.1835116297006607,
+   "final_loss": 0.02274763397872448,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    6,
+    10
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 38.29277027750504,
+   "rel_l2": 0.22766414284706116,
+   "final_loss": 0.029599377885460854,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "mode": "cuda_graph",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 22.197795955500624,
+   "rel_l2": 0.04114481061697006,
+   "final_loss": 0.002949615940451622,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": true,
+   "mode": "eager_cuda",
+   "arch": [
+    10,
+    20
+   ],
+   "epochs": 2000,
+   "ms_per_epoch": 58.91597288699995,
+   "rel_l2": 0.05900390073657036,
+   "final_loss": 0.006408438086509705,
+   "diverged": false
+  },
+  {
+   "problem": "wave",
+   "device": "cpu",
+   "amp": false,
+   "mode": "eager_cpu",
+   "arch": [
+    3,
+    20
+   ],
+   "epochs": 200,
+   "ms_per_epoch": 77.10724879500049,
+   "rel_l2": 0.9175858497619629,
+   "final_loss": 0.28382447361946106,
+   "diverged": false
+  }
+ ],
+ "throughput": [
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "workers": 1,
+   "epochs_per_second": 98.30883553237736
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "workers": 2,
+   "epochs_per_second": 158.10343468250184
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "workers": 3,
+   "epochs_per_second": 197.62917147345084
+  },
+  {
+   "problem": "pendulum",
+   "device": "cuda",
+   "amp": false,
+   "workers": 4,
+   "epochs_per_second": 226.62533494533858
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "workers": 1,
+   "epochs_per_second": 65.38208579652219
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "workers": 2,
+   "epochs_per_second": 85.71178134574586
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "workers": 3,
+   "epochs_per_second": 96.26171726864955
+  },
+  {
+   "problem": "heat",
+   "device": "cuda",
+   "amp": false,
+   "workers": 4,
+   "epochs_per_second": 106.10679319334302
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "workers": 1,
+   "epochs_per_second": 58.66005936775944
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "workers": 2,
+   "epochs_per_second": 68.76055398957587
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "workers": 3,
+   "epochs_per_second": 76.73945121844294
+  },
+  {
+   "problem": "wave",
+   "device": "cuda",
+   "amp": false,
+   "workers": 4,
+   "epochs_per_second": 77.38314637488354
+  }
+ ],
+ "decision": {
+  "pendulum": {
+   "device": "cuda",
+   "amp": false,
+   "amp_faster": false,
+   "amp_within_10pct_l2": true,
+   "gpu_fp32_ms": 1.7570687566646181,
+   "cpu_fp32_ms": 3.2236254250165075
+  },
+  "heat": {
+   "device": "cuda",
+   "amp": false,
+   "amp_faster": false,
+   "amp_within_10pct_l2": false,
+   "gpu_fp32_ms": 8.847911296329888,
+   "cpu_fp32_ms": 67.77527828999155
+  },
+  "wave": {
+   "device": "cuda",
+   "amp": false,
+   "amp_faster": false,
+   "amp_within_10pct_l2": false,
+   "gpu_fp32_ms": 12.473101435833087,
+   "cpu_fp32_ms": 77.10724879500049
+  }
+ }
+}

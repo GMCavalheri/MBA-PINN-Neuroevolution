@@ -1,0 +1,10 @@
+# 1D wave equation / vibrating string (dimensionless): u_tt - c^2 u_xx = 0 on x, t in [0, 1]
+# u(x, 0) = sin(pi x), u_t(x, 0) = 0, u(0, t) = u(1, t) = 0
+# Exact solution: u(x, t) = sin(pi x) cos(c pi t)
+name: wave
+lr: 1.0e-3
+problem:
+  c: 1.0
+  nx: 100                   # collocation grid (as in the monograph)
+  nt: 250
+  n_eval: 201

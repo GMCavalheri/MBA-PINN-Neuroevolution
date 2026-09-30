@@ -1,0 +1,13 @@
+# Undamped simple pendulum (small-angle harmonic oscillator): x'' + w0^2 x = 0
+# Exact solution: x(t) = A sin(w0 t - delta), with A = 1, delta = 0.
+name: pendulum
+lr: 1.0e-4
+problem:
+  omega0: 20.0
+  amplitude: 1.0
+  phase: 0.0
+  n_grid: 500               # grid over t in [0, 1] (as in the monograph)
+  data_slice: [0, 200, 20]  # 10 observations with t < 0.4: grid[0:200:20]
+  n_collocation: 30         # equally spaced physics points over [0, 1]
+  physics_weight: 1.0e-4    # lambda multiplying the physics loss (as in the monograph code)
+  n_eval: 1000              # evaluation points for the relative L2 error
