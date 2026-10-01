@@ -1,0 +1,73 @@
+2026-10-01 03:36:36,521 [MainProcess] problem=wave runs=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34] workers=3 amp=False device=cuda scale=1.0
+2026-10-01 03:36:36,527 [MainProcess] thermal guard: pause at 80 C, resume at 72 C
+2026-10-01 03:36:38,770 [w1] wave run 01 started (device=cuda, amp=False)
+2026-10-01 03:36:38,776 [w2] wave run 02 started (device=cuda, amp=False)
+2026-10-01 03:36:38,780 [w0] wave run 00 started (device=cuda, amp=False)
+2026-10-01 04:27:59,412 [w1] wave run 01 done in 3081s | L2 ga=2.487e-02 random=8.822e-03 rs=3.480e-03 | arch ga=[5, 3] random=[4, 16] rs=[2, 18]
+2026-10-01 04:27:59,412 [w1] wave run 04 started (device=cuda, amp=False)
+2026-10-01 04:30:35,403 [w0] wave run 00 done in 3237s | L2 ga=9.022e-03 random=2.515e-02 rs=1.388e-02 | arch ga=[7, 16] random=[3, 5] rs=[2, 14]
+2026-10-01 04:30:35,404 [w0] wave run 03 started (device=cuda, amp=False)
+2026-10-01 04:39:30,756 [w2] wave run 02 done in 3772s | L2 ga=4.124e-03 random=5.837e-03 rs=7.468e-03 | arch ga=[6, 11] random=[9, 12] rs=[5, 11]
+2026-10-01 04:39:30,756 [w2] wave run 05 started (device=cuda, amp=False)
+2026-10-01 05:22:17,797 [w0] wave run 03 done in 3102s | L2 ga=4.727e-03 random=1.224e-02 rs=1.220e-02 | arch ga=[4, 19] random=[4, 5] rs=[3, 11]
+2026-10-01 05:22:17,798 [w0] wave run 06 started (device=cuda, amp=False)
+2026-10-01 05:26:38,225 [w1] wave run 04 done in 3519s | L2 ga=1.878e-02 random=7.638e-03 rs=6.643e-03 | arch ga=[7, 14] random=[3, 14] rs=[3, 19]
+2026-10-01 05:26:38,225 [w1] wave run 07 started (device=cuda, amp=False)
+2026-10-01 05:29:32,558 [w2] wave run 05 done in 3002s | L2 ga=8.023e-03 random=1.566e-02 rs=3.451e-03 | arch ga=[3, 17] random=[7, 7] rs=[3, 16]
+2026-10-01 05:29:32,558 [w2] wave run 08 started (device=cuda, amp=False)
+2026-10-01 06:21:51,286 [w0] wave run 06 done in 3573s | L2 ga=4.285e-03 random=3.684e-03 rs=1.483e-02 | arch ga=[4, 19] random=[3, 15] rs=[5, 9]
+2026-10-01 06:21:51,287 [w0] wave run 09 started (device=cuda, amp=False)
+2026-10-01 06:23:09,964 [w2] wave run 08 done in 3217s | L2 ga=5.446e-03 random=1.394e-02 rs=5.380e-03 | arch ga=[5, 12] random=[8, 9] rs=[2, 13]
+2026-10-01 06:23:09,965 [w2] wave run 11 started (device=cuda, amp=False)
+2026-10-01 06:25:10,502 [w1] wave run 07 done in 3512s | L2 ga=2.193e-02 random=8.929e-01 rs=7.134e-03 | arch ga=[4, 17] random=[10, 2] rs=[3, 16]
+2026-10-01 06:25:10,502 [w1] wave run 10 started (device=cuda, amp=False)
+2026-10-01 07:11:27,794 [w0] wave run 09 done in 2977s | L2 ga=1.233e-02 random=6.537e-01 rs=1.080e-02 | arch ga=[6, 13] random=[3, 2] rs=[3, 17]
+2026-10-01 07:11:27,794 [w0] wave run 12 started (device=cuda, amp=False)
+2026-10-01 07:32:12,317 [w2] wave run 11 done in 4142s | L2 ga=3.796e-02 random=6.770e-02 rs=1.769e-02 | arch ga=[7, 14] random=[9, 9] rs=[3, 15]
+2026-10-01 07:32:12,317 [w2] wave run 14 started (device=cuda, amp=False)
+2026-10-01 07:34:49,866 [w1] wave run 10 done in 4179s | L2 ga=9.673e-03 random=1.070e-02 rs=8.533e-03 | arch ga=[5, 11] random=[9, 15] rs=[4, 20]
+2026-10-01 07:34:49,867 [w1] wave run 13 started (device=cuda, amp=False)
+2026-10-01 08:01:21,160 [w0] wave run 12 done in 2993s | L2 ga=7.408e-03 random=2.843e-03 rs=5.668e-03 | arch ga=[4, 15] random=[3, 18] rs=[2, 17]
+2026-10-01 08:01:21,160 [w0] wave run 15 started (device=cuda, amp=False)
+2026-10-01 08:24:45,120 [w2] wave run 14 done in 3153s | L2 ga=3.756e-03 random=9.733e-03 rs=1.278e-02 | arch ga=[4, 17] random=[3, 9] rs=[4, 19]
+2026-10-01 08:24:45,120 [w2] wave run 17 started (device=cuda, amp=False)
+2026-10-01 08:34:04,009 [w1] wave run 13 done in 3554s | L2 ga=1.085e-02 random=8.944e-03 rs=7.016e-03 | arch ga=[4, 17] random=[7, 9] rs=[5, 15]
+2026-10-01 08:34:04,009 [w1] wave run 16 started (device=cuda, amp=False)
+2026-10-01 09:04:42,045 [w0] wave run 15 done in 3801s | L2 ga=6.157e-03 random=1.140e-02 rs=4.561e-03 | arch ga=[6, 7] random=[6, 19] rs=[3, 20]
+2026-10-01 09:04:42,045 [w0] wave run 18 started (device=cuda, amp=False)
+2026-10-01 09:25:19,331 [w2] wave run 17 done in 3634s | L2 ga=7.556e-03 random=8.967e-01 rs=4.805e-03 | arch ga=[5, 10] random=[3, 1] rs=[6, 20]
+2026-10-01 09:25:19,331 [w2] wave run 20 started (device=cuda, amp=False)
+2026-10-01 09:45:17,615 [w1] wave run 16 done in 4274s | L2 ga=1.128e-02 random=5.277e-02 rs=1.283e-02 | arch ga=[6, 20] random=[6, 12] rs=[5, 8]
+2026-10-01 09:45:17,615 [w1] wave run 19 started (device=cuda, amp=False)
+2026-10-01 09:59:49,601 [w0] wave run 18 done in 3308s | L2 ga=9.113e-03 random=1.252e-02 rs=1.358e-02 | arch ga=[4, 16] random=[7, 7] rs=[3, 16]
+2026-10-01 09:59:49,602 [w0] wave run 21 started (device=cuda, amp=False)
+2026-10-01 10:25:32,674 [w2] wave run 20 done in 3613s | L2 ga=1.098e-02 random=2.053e-02 rs=8.235e-03 | arch ga=[3, 15] random=[9, 4] rs=[5, 17]
+2026-10-01 10:25:32,674 [w2] wave run 23 started (device=cuda, amp=False)
+2026-10-01 10:29:04,992 [w1] wave run 19 done in 2627s | L2 ga=3.730e-03 random=3.206e-03 rs=4.664e-03 | arch ga=[3, 16] random=[4, 12] rs=[3, 11]
+2026-10-01 10:29:04,993 [w1] wave run 22 started (device=cuda, amp=False)
+2026-10-01 11:14:59,039 [w0] wave run 21 done in 4509s | L2 ga=1.428e-02 random=1.446e-03 rs=9.640e-03 | arch ga=[7, 11] random=[1, 16] rs=[10, 14]
+2026-10-01 11:14:59,039 [w0] wave run 24 started (device=cuda, amp=False)
+2026-10-01 11:39:47,095 [w2] wave run 23 done in 4454s | L2 ga=8.682e-03 random=1.068e-02 rs=5.673e-03 | arch ga=[7, 19] random=[10, 16] rs=[5, 15]
+2026-10-01 11:39:47,095 [w2] wave run 26 started (device=cuda, amp=False)
+2026-10-01 11:42:41,074 [w1] wave run 22 done in 4416s | L2 ga=1.305e-02 random=7.557e-02 rs=6.096e-03 | arch ga=[4, 16] random=[9, 19] rs=[2, 18]
+2026-10-01 11:42:41,074 [w1] wave run 25 started (device=cuda, amp=False)
+2026-10-01 12:31:28,965 [w0] wave run 24 done in 4590s | L2 ga=1.067e-02 random=1.006e-02 rs=1.353e-02 | arch ga=[7, 19] random=[6, 14] rs=[6, 14]
+2026-10-01 12:31:28,965 [w0] wave run 27 started (device=cuda, amp=False)
+2026-10-01 12:38:07,352 [w1] wave run 25 done in 3326s | L2 ga=1.181e-02 random=8.545e-03 rs=6.417e-03 | arch ga=[3, 14] random=[7, 9] rs=[4, 20]
+2026-10-01 12:38:07,352 [w1] wave run 28 started (device=cuda, amp=False)
+2026-10-01 12:49:03,481 [w2] wave run 26 done in 4156s | L2 ga=1.898e-02 random=2.345e-02 rs=6.783e-03 | arch ga=[4, 20] random=[8, 8] rs=[4, 19]
+2026-10-01 12:49:03,481 [w2] wave run 29 started (device=cuda, amp=False)
+2026-10-01 13:11:24,991 [w0] wave run 27 done in 2396s | L2 ga=9.022e-03 random=9.101e-01 rs=4.845e-03 | arch ga=[2, 19] random=[1, 2] rs=[3, 20]
+2026-10-01 13:11:24,991 [w0] wave run 30 started (device=cuda, amp=False)
+2026-10-01 13:39:28,969 [w2] wave run 29 done in 3025s | L2 ga=8.641e-03 random=1.195e-02 rs=2.331e-03 | arch ga=[4, 10] random=[1, 12] rs=[4, 11]
+2026-10-01 13:39:28,969 [w2] wave run 32 started (device=cuda, amp=False)
+2026-10-01 13:50:33,679 [w1] wave run 28 done in 4346s | L2 ga=9.252e-03 random=1.204e-02 rs=1.020e-02 | arch ga=[4, 17] random=[8, 18] rs=[3, 18]
+2026-10-01 13:50:33,679 [w1] wave run 31 started (device=cuda, amp=False)
+2026-10-01 14:03:13,650 [w0] wave run 30 done in 3109s | L2 ga=6.424e-03 random=1.028e-02 rs=5.076e-03 | arch ga=[4, 16] random=[9, 12] rs=[2, 8]
+2026-10-01 14:03:13,651 [w0] wave run 33 started (device=cuda, amp=False)
+2026-10-01 14:39:50,955 [w2] wave run 32 done in 3622s | L2 ga=1.174e-02 random=6.071e-02 rs=6.797e-03 | arch ga=[8, 10] random=[6, 9] rs=[4, 17]
+2026-10-01 14:49:53,998 [w1] wave run 31 done in 3560s | L2 ga=8.602e-03 random=1.799e-02 rs=1.099e-02 | arch ga=[4, 17] random=[1, 6] rs=[6, 18]
+2026-10-01 14:49:53,998 [w1] wave run 34 started (device=cuda, amp=False)
+2026-10-01 14:58:08,022 [w0] wave run 33 done in 3294s | L2 ga=5.382e-03 random=1.509e-02 rs=4.072e-03 | arch ga=[7, 14] random=[1, 10] rs=[5, 18]
+2026-10-01 15:11:34,014 [w1] wave run 34 done in 1300s | L2 ga=7.569e-03 random=2.404e-02 rs=1.060e-02 | arch ga=[7, 14] random=[5, 7] rs=[3, 11]
+2026-10-01 15:11:35,140 [MainProcess] all done: 35 runs complete

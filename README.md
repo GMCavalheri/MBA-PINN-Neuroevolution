@@ -62,9 +62,45 @@ while the PINN recovers the whole oscillation (`scripts/fig_nn_vs_pinn.py`, seed
 
 ## Results
 
-> The 105 seeded runs (35 per problem) are running. The statistics, tables and figures will be added here when they
-> finish: relative L2 error of each arm, wins of the GA with binomial and Wilcoxon tests (Holm-corrected), median
-> error ratios with bootstrap intervals, and whether the partial-training loss is a good proxy for the error.
+All 105 runs (35 per problem, seeds 1000–1034) finished without divergence; they took about 23 hours with three
+runs in parallel on an RTX 2060 Mobile. Primary metric: relative L2 error of the final network against the exact
+solution.
+
+![Relative L2 error of each arm over the 35 runs](docs/images/error_boxplot.png)
+
+| Problem | Median error: GA | Random | Random search | GA vs random: wins, p<sub>W</sub> (Holm), median ratio | GA vs random search: wins, p<sub>W</sub> (Holm), median ratio |
+|---|---|---|---|---|---|
+| Pendulum | 5.8 × 10⁻³ | 3.6 × 10⁻² | 5.8 × 10⁻³ | **23/35**, **0.027**, 4.62 | 20/35, 0.88, 1.58 |
+| Heat | 8.8 × 10⁻⁴ | 1.0 × 10⁻³ | 8.1 × 10⁻⁴ | 21/35, 0.74, 1.49 | 16/35, 1.00, 0.93 |
+| Wave | 9.0 × 10⁻³ | 1.2 × 10⁻² | 7.0 × 10⁻³ | **26/35**, **0.003**, 1.78 | 12/35, 1.00, 0.76 |
+
+p<sub>W</sub>: one-sided Wilcoxon signed-rank test on the paired log-ratios, Holm-adjusted over the six comparisons.
+Median ratio: reference error ÷ GA error (above 1 favors the GA). Binomial tests, Wilson intervals, bootstrap
+intervals and the secondary metric (final loss) are in [`results/summary.json`](results/summary.json) and
+[`results/tables/`](results/tables).
+
+**Findings**
+
+- **Searching pays off over a random choice.** The GA reduced the median error by 1.5× to 4.6× and avoided almost all
+  failures of the random arm (relative error above 0.5 in 11 pendulum, 1 heat and 4 wave runs, against 1, 0 and 0 for
+  the GA). The improvement is significant for the pendulum and the wave equation; in the heat equation almost any
+  tanh network reaches an error of about 10⁻³.
+- **The evolutionary operators do not beat random search with the same budget.** Random search (10 candidates ×
+  3,000 epochs) tied with the GA in all problems and was slightly ahead in the wave equation (23/35 wins; exploratory
+  test, p = 0.066 after Holm). Evaluating diverse candidates for longer seems worth more than small mutations of the
+  best ones.
+- **The partial-training loss is a reliable proxy.** Spearman correlation between the fitness after 1,000 epochs and
+  the error of the 350 screened candidates per problem: 0.79 (pendulum), 0.93 (heat), 0.99 (wave).
+- The GA selects the largest networks (mutation only grows them), so its search took 25–35% more time than random
+  search with the same number of epochs.
+
+PINN of the median GA run of each problem:
+
+![PINN predictions of the median GA run](docs/images/solutions.png)
+
+Total loss along the full training in the same runs (thin: every epoch; thick: 200-epoch rolling median):
+
+![Loss curves of the three arms](docs/images/loss_curves.png)
 
 ## Installation
 
@@ -133,7 +169,9 @@ evopinn/            model, problems, training (CUDA graphs), GA, baselines, expe
 scripts/            run_experiment.py, run_all.sh, benchmark_amp.py, make_tables_figs.py, figure scripts
 tests/              pytest suite (derivatives, exact solutions, GA, seeds, smoke run, GPU)
 docs/images/        figures used in this README
-results/            benchmark.json; per-run JSON, loss histories and final weights (added after the runs)
+results/            benchmark.json, summary.json, tables/, figures/; per problem: run_XX.json (config, seeds,
+                    environment, every candidate), run_XX_hist.npz (loss histories), run_XX_models.pt (final
+                    weights), log.txt and gpu_temperature.csv
 ```
 
 ## Authors

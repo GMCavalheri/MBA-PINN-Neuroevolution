@@ -13,11 +13,3 @@ results/benchmark_log.txt
 results/run_all.log
 results/run_all.pid
 results/make_tables_figs.log
-
-# experiment outputs are committed after all runs finish
-results/pendulum/
-results/heat/
-results/wave/
-results/figures/
-results/tables/
-results/summary.json

@@ -1,0 +1,798 @@
+{
+ "problem": "pendulum",
+ "run": 3,
+ "master_seed": 1003,
+ "amp": false,
+ "config_hash": "3cb3f8311005",
+ "config": {
+  "ga": {
+   "population": 10,
+   "selected": 5,
+   "layers_range": [
+    1,
+    10
+   ],
+   "neurons_range": [
+    1,
+    20
+   ],
+   "mutation_layers": [
+    0,
+    1
+   ],
+   "mutation_neurons": [
+    0,
+    1,
+    2
+   ],
+   "epochs_screen": 1000,
+   "epochs_reeval": 2000
+  },
+  "random_search": {
+   "candidates": 10,
+   "epochs": 3000
+  },
+  "epochs_full": 20000,
+  "fitness_window": 100,
+  "runs": 35,
+  "master_seed_offset": 1000,
+  "device": "cuda",
+  "amp": false,
+  "name": "pendulum",
+  "lr": 0.0001,
+  "problem": {
+   "omega0": 20.0,
+   "amplitude": 1.0,
+   "phase": 0.0,
+   "n_grid": 500,
+   "data_slice": [
+    0,
+    200,
+    20
+   ],
+   "n_collocation": 30,
+   "physics_weight": 0.0001,
+   "n_eval": 1000
+  }
+ },
+ "environment": {
+  "python": "3.12.3",
+  "torch": "2.11.0+cu128",
+  "numpy": "2.5.3",
+  "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.39",
+  "device": "cuda",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 2060"
+ },
+ "search": {
+  "ga": {
+   "best": [
+    9,
+    12
+   ],
+   "epochs_used": 30000,
+   "selected": [
+    [
+     9,
+     19
+    ],
+    [
+     9,
+     12
+    ],
+    [
+     10,
+     12
+    ],
+    [
+     4,
+     18
+    ],
+    [
+     4,
+     14
+    ]
+   ],
+   "descendants": [
+    [
+     10,
+     19
+    ],
+    [
+     9,
+     13
+    ],
+    [
+     10,
+     13
+    ],
+    [
+     5,
+     20
+    ],
+    [
+     5,
+     15
+    ]
+   ],
+   "screening": [
+    {
+     "arch": [
+      8,
+      4
+     ],
+     "epochs": 1000,
+     "seed": 4226843568,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4619615077972412,
+     "final_terms": {
+      "data": 0.46115386486053467,
+      "physics": 0.000807642238214612
+     },
+     "last_loss": 0.4603252708911896,
+     "rel_l2": 1.0004289150238037,
+     "n_params": 153,
+     "seconds": 6.881585356008145,
+     "diverged": false
+    },
+    {
+     "arch": [
+      10,
+      12
+     ],
+     "epochs": 1000,
+     "seed": 3488324035,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.44898656010627747,
+     "final_terms": {
+      "data": 0.4406166970729828,
+      "physics": 0.008369853720068932
+     },
+     "last_loss": 0.4467928409576416,
+     "rel_l2": 0.9919331669807434,
+     "n_params": 1441,
+     "seconds": 8.954150468998705,
+     "diverged": false
+    },
+    {
+     "arch": [
+      4,
+      18
+     ],
+     "epochs": 1000,
+     "seed": 3611230396,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45229461789131165,
+     "final_terms": {
+      "data": 0.44618675112724304,
+      "physics": 0.006107823923230171
+     },
+     "last_loss": 0.45209676027297974,
+     "rel_l2": 0.9947449564933777,
+     "n_params": 1081,
+     "seconds": 3.673627429991029,
+     "diverged": false
+    },
+    {
+     "arch": [
+      3,
+      3
+     ],
+     "epochs": 1000,
+     "seed": 33227758,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4566049873828888,
+     "final_terms": {
+      "data": 0.453139066696167,
+      "physics": 0.0034659430384635925
+     },
+     "last_loss": 0.4565701484680176,
+     "rel_l2": 0.9965406656265259,
+     "n_params": 34,
+     "seconds": 2.6058929889986757,
+     "diverged": false
+    },
+    {
+     "arch": [
+      2,
+      1
+     ],
+     "epochs": 1000,
+     "seed": 3644786672,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45698803663253784,
+     "final_terms": {
+      "data": 0.45549389719963074,
+      "physics": 0.001494168071076274
+     },
+     "last_loss": 0.4569777548313141,
+     "rel_l2": 0.9978294968605042,
+     "n_params": 6,
+     "seconds": 1.6638249859970529,
+     "diverged": false
+    },
+    {
+     "arch": [
+      4,
+      11
+     ],
+     "epochs": 1000,
+     "seed": 1224761059,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4589102864265442,
+     "final_terms": {
+      "data": 0.45659804344177246,
+      "physics": 0.0023121696431189775
+     },
+     "last_loss": 0.45875629782676697,
+     "rel_l2": 0.9980263113975525,
+     "n_params": 430,
+     "seconds": 3.534710816005827,
+     "diverged": false
+    },
+    {
+     "arch": [
+      6,
+      1
+     ],
+     "epochs": 1000,
+     "seed": 1618229010,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4570586383342743,
+     "final_terms": {
+      "data": 0.4553363025188446,
+      "physics": 0.0017224160255864263
+     },
+     "last_loss": 0.4570584297180176,
+     "rel_l2": 0.9977371096611023,
+     "n_params": 14,
+     "seconds": 4.181422351000947,
+     "diverged": false
+    },
+    {
+     "arch": [
+      9,
+      12
+     ],
+     "epochs": 1000,
+     "seed": 2432516815,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.3256111145019531,
+     "final_terms": {
+      "data": 0.27879512310028076,
+      "physics": 0.04681602120399475
+     },
+     "last_loss": 0.29704850912094116,
+     "rel_l2": 0.906904399394989,
+     "n_params": 1285,
+     "seconds": 8.105556811002316,
+     "diverged": false
+    },
+    {
+     "arch": [
+      9,
+      19
+     ],
+     "epochs": 1000,
+     "seed": 3520322870,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.16863670945167542,
+     "final_terms": {
+      "data": 0.0761290192604065,
+      "physics": 0.09250770509243011
+     },
+     "last_loss": 0.1606447696685791,
+     "rel_l2": 0.782609760761261,
+     "n_params": 3098,
+     "seconds": 8.230688265000936,
+     "diverged": false
+    },
+    {
+     "arch": [
+      4,
+      14
+     ],
+     "epochs": 1000,
+     "seed": 1813651932,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45393383502960205,
+     "final_terms": {
+      "data": 0.45060524344444275,
+      "physics": 0.0033285748213529587
+     },
+     "last_loss": 0.45391762256622314,
+     "rel_l2": 0.9961352348327637,
+     "n_params": 673,
+     "seconds": 3.6112032389937667,
+     "diverged": false
+    }
+   ],
+   "reevaluation": [
+    {
+     "arch": [
+      9,
+      19
+     ],
+     "epochs": 2000,
+     "seed": 3445819703,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.20847682654857635,
+     "final_terms": {
+      "data": 0.12454553693532944,
+      "physics": 0.08393131196498871
+     },
+     "last_loss": 0.18766799569129944,
+     "rel_l2": 0.8108383417129517,
+     "n_params": 3098,
+     "seconds": 16.2232539300021,
+     "diverged": false
+    },
+    {
+     "arch": [
+      9,
+      12
+     ],
+     "epochs": 2000,
+     "seed": 3014523837,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.13338476419448853,
+     "final_terms": {
+      "data": 0.049429990351200104,
+      "physics": 0.08395476639270782
+     },
+     "last_loss": 0.12802019715309143,
+     "rel_l2": 0.7271624803543091,
+     "n_params": 1285,
+     "seconds": 15.911468794991379,
+     "diverged": false
+    },
+    {
+     "arch": [
+      10,
+      12
+     ],
+     "epochs": 2000,
+     "seed": 2266870316,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.29955628514289856,
+     "final_terms": {
+      "data": 0.22634443640708923,
+      "physics": 0.07321185618638992
+     },
+     "last_loss": 0.29091644287109375,
+     "rel_l2": 0.897244393825531,
+     "n_params": 1441,
+     "seconds": 17.583473549995688,
+     "diverged": false
+    },
+    {
+     "arch": [
+      4,
+      18
+     ],
+     "epochs": 2000,
+     "seed": 3905070721,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4460147023200989,
+     "final_terms": {
+      "data": 0.4368024170398712,
+      "physics": 0.009212343953549862
+     },
+     "last_loss": 0.4447607100009918,
+     "rel_l2": 0.9911112189292908,
+     "n_params": 1081,
+     "seconds": 7.209116270008963,
+     "diverged": false
+    },
+    {
+     "arch": [
+      4,
+      14
+     ],
+     "epochs": 2000,
+     "seed": 1285860197,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45659321546554565,
+     "final_terms": {
+      "data": 0.45476922392845154,
+      "physics": 0.0018240042263641953
+     },
+     "last_loss": 0.4565662145614624,
+     "rel_l2": 0.9974790215492249,
+     "n_params": 673,
+     "seconds": 7.1014141740015475,
+     "diverged": false
+    },
+    {
+     "arch": [
+      10,
+      19
+     ],
+     "epochs": 2000,
+     "seed": 512970814,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.3216630816459656,
+     "final_terms": {
+      "data": 0.27398377656936646,
+      "physics": 0.04767930880188942
+     },
+     "last_loss": 0.2831822335720062,
+     "rel_l2": 0.8994731903076172,
+     "n_params": 3478,
+     "seconds": 17.761954219007748,
+     "diverged": false
+    },
+    {
+     "arch": [
+      9,
+      13
+     ],
+     "epochs": 2000,
+     "seed": 3027251418,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.20536209642887115,
+     "final_terms": {
+      "data": 0.12074337899684906,
+      "physics": 0.0846187025308609
+     },
+     "last_loss": 0.1932186782360077,
+     "rel_l2": 0.8236001133918762,
+     "n_params": 1496,
+     "seconds": 15.59584663399437,
+     "diverged": false
+    },
+    {
+     "arch": [
+      10,
+      13
+     ],
+     "epochs": 2000,
+     "seed": 3255437309,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.39848604798316956,
+     "final_terms": {
+      "data": 0.3722774088382721,
+      "physics": 0.02620868757367134
+     },
+     "last_loss": 0.395137220621109,
+     "rel_l2": 0.9629673957824707,
+     "n_params": 1678,
+     "seconds": 17.41007813801116,
+     "diverged": false
+    },
+    {
+     "arch": [
+      5,
+      20
+     ],
+     "epochs": 2000,
+     "seed": 336925043,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.31968167424201965,
+     "final_terms": {
+      "data": 0.272370845079422,
+      "physics": 0.047310832887887955
+     },
+     "last_loss": 0.3090388774871826,
+     "rel_l2": 0.9160018563270569,
+     "n_params": 1741,
+     "seconds": 8.956829022004968,
+     "diverged": false
+    },
+    {
+     "arch": [
+      5,
+      15
+     ],
+     "epochs": 2000,
+     "seed": 1676725730,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45192572474479675,
+     "final_terms": {
+      "data": 0.4480954110622406,
+      "physics": 0.0038303846959024668
+     },
+     "last_loss": 0.45180293917655945,
+     "rel_l2": 0.9953244924545288,
+     "n_params": 1006,
+     "seconds": 8.784566861999338,
+     "diverged": false
+    }
+   ]
+  },
+  "random_search": {
+   "best": [
+    8,
+    10
+   ],
+   "epochs_used": 30000,
+   "selected": [],
+   "descendants": [],
+   "screening": [
+    {
+     "arch": [
+      9,
+      9
+     ],
+     "epochs": 3000,
+     "seed": 2614207185,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.44823482632637024,
+     "final_terms": {
+      "data": 0.43916141986846924,
+      "physics": 0.009073379449546337
+     },
+     "last_loss": 0.44700950384140015,
+     "rel_l2": 0.9920175075531006,
+     "n_params": 748,
+     "seconds": 23.21598273800919,
+     "diverged": false
+    },
+    {
+     "arch": [
+      5,
+      7
+     ],
+     "epochs": 3000,
+     "seed": 2885020957,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45469874143600464,
+     "final_terms": {
+      "data": 0.4524446129798889,
+      "physics": 0.002254187362268567
+     },
+     "last_loss": 0.45457908511161804,
+     "rel_l2": 0.9966679215431213,
+     "n_params": 246,
+     "seconds": 12.692179284000304,
+     "diverged": false
+    },
+    {
+     "arch": [
+      8,
+      10
+     ],
+     "epochs": 3000,
+     "seed": 3426813230,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.1501852124929428,
+     "final_terms": {
+      "data": 0.056758664548397064,
+      "physics": 0.09342652559280396
+     },
+     "last_loss": 0.14865103363990784,
+     "rel_l2": 0.760458767414093,
+     "n_params": 801,
+     "seconds": 20.882819321006536,
+     "diverged": false
+    },
+    {
+     "arch": [
+      6,
+      2
+     ],
+     "epochs": 3000,
+     "seed": 1342987521,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4525766670703888,
+     "final_terms": {
+      "data": 0.4469294846057892,
+      "physics": 0.005647235084325075
+     },
+     "last_loss": 0.45254912972450256,
+     "rel_l2": 0.9950007796287537,
+     "n_params": 37,
+     "seconds": 14.831982874005917,
+     "diverged": false
+    },
+    {
+     "arch": [
+      10,
+      15
+     ],
+     "epochs": 3000,
+     "seed": 565077893,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.3086892068386078,
+     "final_terms": {
+      "data": 0.2383784055709839,
+      "physics": 0.07031077146530151
+     },
+     "last_loss": 0.3052207827568054,
+     "rel_l2": 0.9062054753303528,
+     "n_params": 2206,
+     "seconds": 26.386098328002845,
+     "diverged": false
+    },
+    {
+     "arch": [
+      7,
+      13
+     ],
+     "epochs": 3000,
+     "seed": 1311003931,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.34700125455856323,
+     "final_terms": {
+      "data": 0.29788675904273987,
+      "physics": 0.04911446198821068
+     },
+     "last_loss": 0.33184438943862915,
+     "rel_l2": 0.9252627491950989,
+     "n_params": 1132,
+     "seconds": 18.3710745319986,
+     "diverged": false
+    },
+    {
+     "arch": [
+      2,
+      9
+     ],
+     "epochs": 3000,
+     "seed": 528365852,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.466825932264328,
+     "final_terms": {
+      "data": 0.46171092987060547,
+      "physics": 0.005114961881190538
+     },
+     "last_loss": 0.4667620062828064,
+     "rel_l2": 0.9998664259910583,
+     "n_params": 118,
+     "seconds": 5.630327974999091,
+     "diverged": false
+    },
+    {
+     "arch": [
+      1,
+      8
+     ],
+     "epochs": 3000,
+     "seed": 2913548444,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.45513299107551575,
+     "final_terms": {
+      "data": 0.4529300034046173,
+      "physics": 0.0022029331885278225
+     },
+     "last_loss": 0.4551181197166443,
+     "rel_l2": 0.9968443512916565,
+     "n_params": 25,
+     "seconds": 3.3944203669962008,
+     "diverged": false
+    },
+    {
+     "arch": [
+      3,
+      11
+     ],
+     "epochs": 3000,
+     "seed": 2676534398,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.4510001242160797,
+     "final_terms": {
+      "data": 0.44470199942588806,
+      "physics": 0.006298189051449299
+     },
+     "last_loss": 0.450834184885025,
+     "rel_l2": 0.9942484498023987,
+     "n_params": 298,
+     "seconds": 7.9921817329886835,
+     "diverged": false
+    },
+    {
+     "arch": [
+      8,
+      5
+     ],
+     "epochs": 3000,
+     "seed": 3698501800,
+     "amp": false,
+     "mode": "cuda_graph",
+     "final_loss": 0.21850937604904175,
+     "final_terms": {
+      "data": 0.123680479824543,
+      "physics": 0.09482893347740173
+     },
+     "last_loss": 0.21539360284805298,
+     "rel_l2": 0.838516354560852,
+     "n_params": 226,
+     "seconds": 20.25835947500309,
+     "diverged": false
+    }
+   ],
+   "reevaluation": []
+  }
+ },
+ "final": {
+  "ga": {
+   "arch": [
+    9,
+    12
+   ],
+   "epochs": 20000,
+   "seed": 1923123604,
+   "amp": false,
+   "mode": "cuda_graph",
+   "final_loss": 0.00013767820200882852,
+   "final_terms": {
+    "data": 5.667916866514133e-06,
+    "physics": 0.00013201027468312532
+   },
+   "last_loss": 6.20827850070782e-05,
+   "rel_l2": 0.000993217690847814,
+   "n_params": 1285,
+   "seconds": 160.02572221199807,
+   "diverged": false
+  },
+  "random": {
+   "arch": [
+    4,
+    5
+   ],
+   "epochs": 20000,
+   "seed": 2698767377,
+   "amp": false,
+   "mode": "cuda_graph",
+   "final_loss": 0.10240490734577179,
+   "final_terms": {
+    "data": 0.02579694800078869,
+    "physics": 0.07660795748233795
+   },
+   "last_loss": 0.10232166945934296,
+   "rel_l2": 0.6338756680488586,
+   "n_params": 106,
+   "seconds": 68.37987748999149,
+   "diverged": false
+  },
+  "random_search": {
+   "arch": [
+    8,
+    10
+   ],
+   "epochs": 20000,
+   "seed": 264116937,
+   "amp": false,
+   "mode": "cuda_graph",
+   "final_loss": 8.721715130377561e-05,
+   "final_terms": {
+    "data": 3.4379795579297934e-06,
+    "physics": 8.377917401958257e-05
+   },
+   "last_loss": 4.825920768780634e-05,
+   "rel_l2": 0.002936662407591939,
+   "n_params": 801,
+   "seconds": 141.99271080100152,
+   "diverged": false
+  }
+ }
+}

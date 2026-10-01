@@ -42,44 +42,52 @@ def fmt_num(x: float, lang: str, nd: int = 2) -> str:
 
 
 def table_results(summary: dict, lang: str) -> str:
-    """Median errors per arm and GA comparisons on the primary metric (relative L2)."""
-    head = {"en": ("Problem", "Median rel. $L^2$ error", "GA", "Random", "Random search",
-                   "GA vs random", "GA vs random search", "Wins", "$p$ (Holm)", "Ratio"),
-            "pt": ("Problema", "Mediana do erro $L^2$ relativo", "AG", "Aleatória", "Busca aleat.",
-                   "AG vs aleatória", "AG vs busca aleatória", "Vitórias", "$p$ (Holm)", "Razão")}[lang]
-    lines = [r"\begin{tabular}{l ccc ccc ccc}", r"\toprule",
-             rf" & \multicolumn{{3}}{{c}}{{{head[1]}}} & \multicolumn{{3}}{{c}}{{{head[5]}}} & \multicolumn{{3}}{{c}}{{{head[6]}}} \\",
-             r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}",
-             rf"{head[0]} & {head[2]} & {head[3]} & {head[4]} & {head[7]} & {head[8]} & {head[9]} & {head[7]} & {head[8]} & {head[9]} \\",
+    """Median relative L2 error and median parameter count of each arm, and the fitness-proxy correlation."""
+    head = {"en": ("Problem", "Median relative $L^2$ error", "Median parameters", "GA", "Random", "Random search",
+                   "$\\rho_{\\mathrm{S}}$"),
+            "pt": ("Problema", "Mediana do erro $L^2$ relativo", "Mediana de parâmetros", "AG", "Aleatória",
+                   "Busca aleatória", "$\\rho_{\\mathrm{S}}$")}[lang]
+    lines = [r"\begin{tabular}{l ccc ccc c}", r"\toprule",
+             rf" & \multicolumn{{3}}{{c}}{{{head[1]}}} & \multicolumn{{3}}{{c}}{{{head[2]}}} & \\",
+             r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}",
+             rf"{head[0]} & {head[3]} & {head[4]} & {head[5]} & {head[3]} & {head[4]} & {head[5]} & {head[6]} \\",
              r"\midrule"]
     for prob, s in summary.items():
         med = s["median"]["rel_l2"]
-        row = [NAMES[lang][prob]] + [fmt_sci(med[a], lang) for a in ("ga", "random", "random_search")]
-        for ref in ("random", "random_search"):
-            c = s["comparisons"][f"rel_l2:ga_vs_{ref}"]
-            row += [f"{c['wins']}/{c['n']}", fmt_sci(c["binomial_p_holm"], lang), fmt_num(c["median_ratio"], lang)]
+        params = s["median_params"]
+        row = ([NAMES[lang][prob]] + [fmt_sci(med[a], lang) for a in ("ga", "random", "random_search")]
+               + [f"{params[a]:,.0f}".replace(",", "." if lang == "pt" else ",") for a in ("ga", "random", "random_search")]
+               + [fmt_num(s["proxy_spearman_screening"]["rho"], lang)])
         lines.append(" & ".join(row) + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     return "\n".join(lines) + "\n"
 
 
-def table_secondary(summary: dict, lang: str) -> str:
-    """Secondary metric (final loss) and Wilcoxon tests on the primary metric."""
-    head = {"en": ("Problem", "Comparison", "Wins (loss)", "$p$ binomial (loss, Holm)",
-                   "$p$ Wilcoxon ($L^2$, Holm)", "Wilson 95\\% ($L^2$ wins)"),
-            "pt": ("Problema", "Comparação", "Vitórias (custo)", "$p$ binomial (custo, Holm)",
-                   "$p$ Wilcoxon ($L^2$, Holm)", "Wilson 95\\% (vitórias $L^2$)")}[lang]
-    refname = {"en": {"random": "GA vs random", "random_search": "GA vs random search"},
-               "pt": {"random": "AG vs aleatória", "random_search": "AG vs busca aleatória"}}[lang]
-    lines = [r"\begin{tabular}{llcccc}", r"\toprule", " & ".join(head) + r" \\", r"\midrule"]
-    for prob, s in summary.items():
-        for ref in ("random", "random_search"):
+def table_comparisons(summary: dict, lang: str) -> str:
+    """Paired comparisons of the GA with each reference (primary metric: relative L2 error)."""
+    head = {"en": ("Problem", "Reference", "Wins", "Wilson 95\\%", "$p_{\\mathrm{B}}$", "$p_{\\mathrm{W}}$",
+                   "Median ratio [95\\% CI]", "Wins (loss)"),
+            "pt": ("Problema", "Referência", "Vitórias", "Wilson 95\\%", "$p_{\\mathrm{B}}$", "$p_{\\mathrm{W}}$",
+                   "Razão mediana [IC 95\\%]", "Vitórias (custo)")}[lang]
+    refname = {"en": {"random": "Random", "random_search": "Random search"},
+               "pt": {"random": "Aleatória", "random_search": "Busca aleatória"}}[lang]
+    lines = [r"\begin{tabular}{ll cc cc c c}", r"\toprule", " & ".join(head) + r" \\", r"\midrule"]
+    probs = list(summary)
+    for i, prob in enumerate(probs):
+        s = summary[prob]
+        for j, ref in enumerate(("random", "random_search")):
+            c = s["comparisons"][f"rel_l2:ga_vs_{ref}"]
             cl = s["comparisons"][f"final_loss:ga_vs_{ref}"]
-            c2 = s["comparisons"][f"rel_l2:ga_vs_{ref}"]
-            lo, hi = c2["wilson_95"]
-            lines.append(" & ".join([NAMES[lang][prob], refname[ref], f"{cl['wins']}/{cl['n']}",
-                                     fmt_sci(cl["binomial_p_holm"], lang), fmt_sci(c2["wilcoxon_p_holm"], lang),
-                                     f"{fmt_pct(lo, lang)}--{fmt_pct(hi, lang)}"]) + r" \\")
+            lo, hi = c["wilson_95"]
+            rlo, rhi = c["median_ratio_95"]
+            ratio = f"{fmt_num(c['median_ratio'], lang)} [{fmt_num(rlo, lang)}; {fmt_num(rhi, lang)}]" if lang == "pt" \
+                else f"{fmt_num(c['median_ratio'], lang)} [{fmt_num(rlo, lang)}, {fmt_num(rhi, lang)}]"
+            lines.append(" & ".join([NAMES[lang][prob] if j == 0 else "", refname[ref], f"{c['wins']}/{c['n']}",
+                                     f"{fmt_pct(lo, lang)}--{fmt_pct(hi, lang)}",
+                                     fmt_sci(c["binomial_p_holm"], lang), fmt_sci(c["wilcoxon_p_holm"], lang),
+                                     ratio, f"{cl['wins']}/{cl['n']}"]) + r" \\")
+        if i < len(probs) - 1:
+            lines.append(r"\addlinespace")
     lines += [r"\bottomrule", r"\end{tabular}"]
     return "\n".join(lines) + "\n"
 
@@ -95,7 +103,7 @@ def main() -> None:
     tables.mkdir(exist_ok=True)
     for lang in ("en", "pt"):
         (tables / f"table_results_{lang}.tex").write_text(table_results(summary, lang), encoding="utf-8")
-        (tables / f"table_secondary_{lang}.tex").write_text(table_secondary(summary, lang), encoding="utf-8")
+        (tables / f"table_comparisons_{lang}.tex").write_text(table_comparisons(summary, lang), encoding="utf-8")
         figs = results / "figures"
         fig_error_boxplot(results, figs, lang)
         fig_loss_curves(results, figs, lang)

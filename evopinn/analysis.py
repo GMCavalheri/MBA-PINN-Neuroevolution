@@ -101,6 +101,7 @@ def analyse_problem(runs: list[dict]) -> dict:
     out["proxy_spearman_final"] = {"rho": float(rho_f.statistic), "p": float(rho_f.pvalue), "n": int(final_loss.size)}
 
     out["architectures"] = {arm: [r["final"][arm]["arch"] for r in runs] for arm in ARMS}
+    out["median_params"] = {arm: float(np.median([r["final"][arm]["n_params"] for r in runs])) for arm in ARMS}
     out["seconds_per_run"] = float(np.median([
         sum(x["seconds"] for x in r["search"]["ga"]["screening"] + r["search"]["ga"]["reevaluation"]
             + r["search"]["random_search"]["screening"]) + sum(r["final"][arm]["seconds"] for arm in ARMS)

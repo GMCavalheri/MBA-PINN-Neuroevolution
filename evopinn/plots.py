@@ -19,11 +19,11 @@ LABELS = {
     "en": {"ga": "GA", "random": "Random", "random_search": "Random search",
            "pendulum": "Pendulum", "heat": "Heat conduction", "wave": "Vibrating string",
            "l2": "Relative $L^2$ error", "epochs": "Epochs", "loss": "Total loss",
-           "exact": "Exact", "pred": "PINN (GA)", "err": "|error|", "data": "Data"},
+           "exact": "Exact", "pred": "PINN (GA)", "err": "|error|", "data": "Data", "run": "run"},
     "pt": {"ga": "AG", "random": "Aleatória", "random_search": "Busca aleatória",
            "pendulum": "Pêndulo", "heat": "Condução de calor", "wave": "Corda vibrante",
            "l2": "Erro $L^2$ relativo", "epochs": "Épocas", "loss": "Custo total",
-           "exact": "Exata", "pred": "PINN (AG)", "err": "|erro|", "data": "Dados"},
+           "exact": "Exata", "pred": "PINN (AG)", "err": "|erro|", "data": "Dados", "run": "rodada"},
 }
 COLORS = {"ga": "#5B21B6", "random": "#9CA3AF", "random_search": "#D97706"}
 PROBLEMS = ("pendulum", "heat", "wave")
@@ -37,6 +37,11 @@ def _save(fig, outdir: Path, name: str) -> None:
     fig.savefig(outdir / f"{name}.pdf")
     fig.savefig(outdir / f"{name}.png")
     plt.close(fig)
+
+
+def _fmt(x: float, lang: str) -> str:
+    s = f"{x:.2e}".replace("e-0", "e-")
+    return s.replace(".", ",") if lang == "pt" else s
 
 
 def median_run(runs: list[dict], arm: str = "ga") -> dict:
@@ -62,15 +67,22 @@ def fig_error_boxplot(results: Path, outdir: Path, lang: str) -> None:
         for i, (vals, arm) in enumerate(zip(data, ARMS), 1):
             ax.scatter(i + rng.uniform(-0.15, 0.15, len(vals)), vals, s=6, color=COLORS[arm], zorder=3)
         ax.set_yscale("log")
-        ax.set_xticks([1, 2, 3], [L[a] for a in ARMS], rotation=15)
+        ax.set_xticks([1, 2, 3], [L[a].replace(" ", "\n", 1) for a in ARMS])
         ax.set_title(L[prob])
     axes[0].set_ylabel(L["l2"])
+    fig.subplots_adjust(wspace=0.3)
     _save(fig, outdir, f"fig_error_boxplot_{lang}")
+
+
+def rolling_median(x: np.ndarray, window: int = 200) -> np.ndarray:
+    """Trailing median over `window` epochs: the typical loss level, ignoring Adam's short spikes."""
+    import pandas as pd
+    return pd.Series(np.asarray(x, dtype=np.float64)).rolling(window, min_periods=1).median().to_numpy()
 
 
 def fig_loss_curves(results: Path, outdir: Path, lang: str) -> None:
     L = LABELS[lang]
-    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.4))
+    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.7))
     for ax, prob in zip(axes, PROBLEMS):
         runs = load_runs(results, prob)
         if not runs:
@@ -80,13 +92,15 @@ def fig_loss_curves(results: Path, outdir: Path, lang: str) -> None:
         hist = np.load(results / prob / f"run_{run['run']:02d}_hist.npz")
         for arm in ARMS:
             arch = run["final"][arm]["arch"]
-            ax.plot(hist[f"final_{arm}"][:, 0], lw=0.8, color=COLORS[arm],
-                    label=f"{L[arm]} ({arch[0]}×{arch[1]})")
+            loss = hist[f"final_{arm}"][:, 0]
+            ax.plot(loss, lw=0.4, color=COLORS[arm], alpha=0.18)
+            ax.plot(rolling_median(loss), lw=1.1, color=COLORS[arm], label=f"{L[arm]} ({arch[0]}×{arch[1]})")
         ax.set_yscale("log")
         ax.set_xlabel(L["epochs"])
-        ax.set_title(f"{L[prob]} (run {run['run']})")
-        ax.legend(fontsize=6, frameon=False)
+        ax.set_title(f"{L[prob]} ({L['run']} {run['run']})")
+        ax.legend(fontsize=6.5, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.24), ncol=1)
     axes[0].set_ylabel(L["loss"])
+    fig.subplots_adjust(wspace=0.35)
     _save(fig, outdir, f"fig_loss_curves_{lang}")
 
 
@@ -116,9 +130,9 @@ def fig_solutions(results: Path, outdir: Path, lang: str) -> None:
         ax.plot(t, p.eval_exact, color="black", lw=1.0, label=L["exact"])
         ax.plot(t, model(t), color=COLORS["ga"], lw=1.0, ls="--", label=L["pred"])
         ax.scatter(p.t_data, p.x_data, s=12, color="#D97706", zorder=3, label=L["data"])
-        ax.set_title(f"{L[prob]} (run {run['run']}, $L^2$ = {run['final']['ga']['rel_l2']:.2e})")
+        ax.set_title(f"{L[prob]} ({L['run']} {run['run']}, $L^2$ = {_fmt(run['final']['ga']['rel_l2'], lang)})")
         ax.set_xlabel("t")
-        ax.legend(fontsize=7, frameon=False, ncol=3)
+        ax.legend(fontsize=7, frameon=False, loc="upper left", bbox_to_anchor=(1.0, 1.0))
 
     for row, prob in ((1, "heat"), (2, "wave")):
         runs = load_runs(results, prob)
@@ -139,7 +153,11 @@ def fig_solutions(results: Path, outdir: Path, lang: str) -> None:
             vmax = np.abs(exact).max() if col < 2 else None
             im = ax.imshow(img.T, origin="lower", extent=extent, aspect="auto", cmap=cmap,
                            vmin=-vmax if vmax else None, vmax=vmax)
-            ax.set_title(f"{L[prob]}: {title}" if col == 0 else title)
+            if col == 0:
+                title = f"{L[prob]}: {title}"
+            elif col == 1:
+                title = f"{title}, {L['run']} {run['run']}, $L^2$ = {_fmt(run['final']['ga']['rel_l2'], lang)}"
+            ax.set_title(title)
             ax.set_xlabel("x")
             if col == 0:
                 ax.set_ylabel("t")
