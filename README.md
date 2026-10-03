@@ -81,8 +81,8 @@ intervals and the secondary metric (final loss) are in [`results/summary.json`](
 
 **Findings**
 
-- **Searching pays off over a random choice.** The GA reduced the median error by 1.5× to 4.6× and avoided almost all
-  failures of the random arm (relative error above 0.5 in 11 pendulum, 1 heat and 4 wave runs, against 1, 0 and 0 for
+- **Searching pays off over a random choice.** In a typical run, the random architecture erred 1.5× to 4.6× more than
+  the GA (median of the paired error ratios), and the GA avoided almost all failures of the random arm (relative error above 0.5 in 11 pendulum, 1 heat and 4 wave runs, against 1, 0 and 0 for
   the GA). The improvement is significant for the pendulum and the wave equation; in the heat equation almost any
   tanh network reaches an error of about 10⁻³.
 - **The evolutionary operators do not beat random search with the same budget.** Random search (10 candidates ×
